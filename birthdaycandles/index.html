@@ -26,6 +26,16 @@
     </style>
   </head>
   <body>
+    <audio id="bgMusic" loop preload="none">
+      <source
+        src="SnapTikth.com_7627743786705194247_2.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <button id="musicToggle" class="music-btn" type="button">
+      🔊 Bật nhạc
+    </button>
     <div class="container">
       <div id="birthdayText"></div>
       <div class="cake-container">
@@ -42,8 +52,10 @@
 
       const birthdayText = document.getElementById("birthdayText");
       birthdayText.innerHTML = `
-        <div id="mainTitle">Happy Birthday, ${name}!</div>
-        <div id="subTitle">Make a wish and blow candles.</div>
+        <div id="mainTitle">Chúc Mừng Bạn Hằng Đã Gia Hạn Hợp Đồng Thêm Một Năm Nữa!!!</div>
+        <div id="subTitle">
+          Hôm nay là ngày khánh đản của hiền hữu, tại hạ xin kính chúc sinh thần an khang, phúc thọ miên trường, vạn sự như ý. Nguyện cho tuổi mới bình an thuận lợi, tiền đồ rộng mở, tâm an ý vững, gia đạo êm ấm. Mãi mến nha đầu ngốc. Love và u!
+        </div>
       `;
 
       const cake = document.getElementById("cake");
@@ -167,6 +179,43 @@
       }
 
       startMicDetection();
+
+      const music = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+let musicStarted = false;
+
+async function toggleMusic() {
+  try {
+    if (music.paused) {
+      await music.play();
+      musicToggle.textContent = "🔈 Tắt nhạc";
+      musicStarted = true;
+    } else {
+      music.pause();
+      musicToggle.textContent = "🔊 Bật nhạc";
+    }
+  } catch (err) {
+    console.log("Không thể phát nhạc:", err);
+  }
+}
+
+musicToggle.addEventListener("click", toggleMusic);
+
+// Auto play khi user click lần đầu (do browser chặn autoplay)
+document.addEventListener(
+  "click",
+  async () => {
+    if (!musicStarted) {
+      try {
+        await music.play();
+        musicToggle.textContent = "🔈 Tắt nhạc";
+        musicStarted = true;
+      } catch (e) {}
+    }
+  },
+  { once: true }
+);
     </script>
   </body>
 </html>

@@ -6861,3 +6861,51 @@ body {
     width: 5px;
   }
 }
+
+.music-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 999;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #ffb9c9;
+  color: #70404a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#birthdayText {
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#subTitle {
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile tối ưu hơn */
+@media (max-width: 480px) {
+  #mainTitle {
+    font-size: 22px;
+  }
+
+  #subTitle {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+#birthdayText {
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255,255,255,0.6);
+  padding: 12px;
+  border-radius: 12px;
+}
